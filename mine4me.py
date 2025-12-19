@@ -9,8 +9,6 @@ import time
 import random
 import hashlib
 import threading
-import os
-from datetime import datetime
 from typing import Dict, List
 
 class TeaseManager:
@@ -37,6 +35,10 @@ class TeaseManager:
 class MiningEngine:
     """Simulates crypto mining operations with transparency"""
     
+    # Mining configuration constants
+    MAX_NONCE = 10000  # Maximum nonce value to try per block
+    DIFFICULTY_PREFIX = "00"  # Hash must start with this prefix
+    
     def __init__(self, config: Dict):
         self.config = config
         self.is_mining = False
@@ -54,12 +56,12 @@ class MiningEngine:
         timestamp = int(time.time())
         
         # Simulate mining work
-        while nonce < 10000:
+        while nonce < self.MAX_NONCE:
             data = f"{timestamp}{nonce}{self.config.get('goddess_wallet', '')}"
             hash_result = self.calculate_hash(data)
             
             # Simulate difficulty - looking for hash with leading zeros
-            if hash_result.startswith("00"):
+            if hash_result.startswith(self.DIFFICULTY_PREFIX):
                 self.total_hashes += nonce
                 return {
                     "hash": hash_result,
@@ -191,6 +193,10 @@ class Mine4Me:
     
     def show_final_stats(self):
         """Display final mining statistics"""
+        if self.mining_engine.start_time is None:
+            print("\n⚠️  Mining was not started properly")
+            return
+            
         elapsed = time.time() - self.mining_engine.start_time
         avg_hashrate = self.mining_engine.get_hashrate()
         

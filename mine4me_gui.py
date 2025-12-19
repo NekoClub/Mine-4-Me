@@ -198,17 +198,18 @@ This is consensual findom automation. You can stop anytime.
             
             self.add_tease_message("Mining stopped. Goddess appreciates your service! 💕")
             
-            # Show final stats
-            elapsed = time.time() - self.app.mining_engine.start_time
-            avg_hashrate = self.app.mining_engine.get_hashrate()
-            
-            messagebox.showinfo(
-                "Mining Complete",
-                f"Total Hashes: {self.app.mining_engine.total_hashes}\n"
-                f"Average Hashrate: {avg_hashrate:.2f} H/s\n"
-                f"Total Time: {elapsed:.2f} seconds\n\n"
-                f"💖 Thank you for your service to Goddess! 💖"
-            )
+            # Show final stats only if mining was started properly
+            if self.app.mining_engine.start_time is not None:
+                elapsed = time.time() - self.app.mining_engine.start_time
+                avg_hashrate = self.app.mining_engine.get_hashrate()
+                
+                messagebox.showinfo(
+                    "Mining Complete",
+                    f"Total Hashes: {self.app.mining_engine.total_hashes}\n"
+                    f"Average Hashrate: {avg_hashrate:.2f} H/s\n"
+                    f"Total Time: {elapsed:.2f} seconds\n\n"
+                    f"💖 Thank you for your service to Goddess! 💖"
+                )
     
     def update_display(self):
         """Update the status display"""
