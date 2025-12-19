@@ -23,6 +23,26 @@ wheels/
 .installed.cfg
 *.egg
 
+# C++
+*.o
+*.obj
+*.out
+*.exe
+*.app
+cpp/mine4me
+cpp/build/
+cpp/cmake-build-*/
+*.dSYM/
+
+# C#
+csharp/bin/
+csharp/obj/
+csharp/*.user
+csharp/*.suo
+csharp/*.userosscache
+csharp/*.sln.docstates
+csharp/.vs/
+
 # IDE
 .vscode/
 .idea/
