@@ -1,0 +1,10 @@
+{
+  "goddess_wallet": "bc1q_goddess_wallet_address_here",
+  "mining_intensity": "medium",
+  "auto_start": false,
+  "show_teases": true,
+  "tease_frequency": 300,
+  "transparency_mode": true,
+  "donation_percentage": 100,
+  "mining_algorithm": "randomx"
+}
